@@ -23,14 +23,19 @@
                     });
             });
 
-            $('#contenedorDetalle #tableDetalle tr').click(function (event) {
-                alert($(this).attr('id'));
+
+
+            $(document).on("click", ".sframe", function (e) {
+                // var seat_number = this.id;
                 $.ajax({
-                    url: "/Pautas/Filtra/" + $(this).attr('id'), success: function (result) {
+                    url: "/Pautas/Filtra/" + this.id, success: function (result) {
                         $("#contenedorPauta").html(result);
                     }
                 });
             });
+
+
+
         });
 
         

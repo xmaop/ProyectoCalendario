@@ -12,7 +12,7 @@
 </p>
 <table id="tablaDetalle" class="table">
     <tr>
-        <th>
+        <th id="miid">
             Calendario
         </th>
         <th>
@@ -44,7 +44,7 @@
 
     @foreach (var item in Model)
     {
-        <tr id=@Html.DisplayFor(modelItem => item.VacunaId)>
+        <tr id=@Html.DisplayFor(modelItem => item.VacunaId) class="sframe">
             <td>
                 @Html.DisplayFor(modelItem => item.calendario.nombre)
             </td>
