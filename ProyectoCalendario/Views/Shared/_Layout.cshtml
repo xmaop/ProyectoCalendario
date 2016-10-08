@@ -9,37 +9,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>
-        $(document).ready(function(){
-               
-                
 
-            $('#tablaCalendario tr').click(function (event) {
-                          
-                    $.ajax({
-                        url: "/DetalleCalendarios/Filtra/" + $(this).attr('id'), success: function (result) {
-                            $("#contenedorDetalle").html(result);
-                        }
-                    });
-            });
-
-
-
-            $(document).on("click", ".sframe", function (e) {
-                
-                $.ajax({
-                    url: "/Pautas/Filtra/" + this.id, success: function (result) {
-                        $("#contenedorPauta").html(result);
-                    }
-                });
-            });
-
-
-
-        });
-
-        
-    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
