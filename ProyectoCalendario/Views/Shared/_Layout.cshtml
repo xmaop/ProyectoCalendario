@@ -26,7 +26,7 @@
 
 
             $(document).on("click", ".sframe", function (e) {
-                // var seat_number = this.id;
+                
                 $.ajax({
                     url: "/Pautas/Filtra/" + this.id, success: function (result) {
                         $("#contenedorPauta").html(result);
