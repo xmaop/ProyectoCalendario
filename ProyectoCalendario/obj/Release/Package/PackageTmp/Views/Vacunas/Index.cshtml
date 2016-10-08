@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ProyectoCalendario.Models.Vacuna>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Vacuna
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VacunaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VacunaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VacunaId })
+        </td>
+    </tr>
+}
+
+</table>

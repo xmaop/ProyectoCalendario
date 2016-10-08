@@ -1,0 +1,26 @@
+﻿@model ProyectoCalendario.Models.Vacuna
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vacuna</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Vacuna
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VacunaId }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

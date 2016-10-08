@@ -1,0 +1,74 @@
+﻿@model ProyectoCalendario.Models.Pauta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pauta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Vacuna
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vacuna.nombre)
+        </dd>
+
+        <dt>
+            Nro Veces
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numeroveces)
+        </dd>
+
+        <dt>
+            Tipo Tiempo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipotiempo)
+        </dd>
+
+        <dt>
+            Tiempo Inicial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TI)
+        </dd>
+
+        <dt>
+            Pauta Inicial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PI)
+        </dd>
+
+        <dt>
+            Tiempo Final
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TF)
+        </dd>
+
+        <dt>
+            Pauta Final
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PF)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PautaId }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

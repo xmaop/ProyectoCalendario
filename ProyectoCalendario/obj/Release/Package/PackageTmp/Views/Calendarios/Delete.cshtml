@@ -1,0 +1,56 @@
+﻿@model ProyectoCalendario.Models.Calendario
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Delete</h2>
+
+<h3>Está seguro de borrar?</h3>
+<div>
+    <h4>Calendario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.especie.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especie.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FF)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

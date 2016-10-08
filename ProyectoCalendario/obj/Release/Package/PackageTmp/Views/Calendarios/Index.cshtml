@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoCalendario.Models.Calendario>
+
+@{
+    ViewBag.Title = "Calendario";
+}
+
+<h2>Calendario</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table id="tablaCalendario" class="table">
+    <tr>
+        <th>
+            Calendario
+        </th>
+        <th>
+            Especie
+        </th>
+        <th>
+            Fecha Inicio
+        </th>
+        <th>
+            Fecha Fin
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id=@Html.DisplayFor(modelItem => item.CalendarioId)>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.especie.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FF)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CalendarioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CalendarioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CalendarioId })
+        </td>
+    </tr>
+}
+
+</table>
+<div id="contenedorDetalle"></div>
+<div id="contenedorPauta"></div>

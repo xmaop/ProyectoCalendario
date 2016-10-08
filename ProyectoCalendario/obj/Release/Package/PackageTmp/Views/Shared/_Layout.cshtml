@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Módulo Vacunas y desparacitación</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function(){
+               
+                
+
+            $('#tablaCalendario tr').click(function (event) {
+                          
+                    $.ajax({
+                        url: "/DetalleCalendarios/Filtra/" + $(this).attr('id'), success: function (result) {
+                            $("#contenedorDetalle").html(result);
+                        }
+                    });
+            });
+
+            $('#contenedorDetalle #tableDetalle tr').click(function (event) {
+                alert($(this).attr('id'));
+                $.ajax({
+                    url: "/Pautas/Filtra/" + $(this).attr('id'), success: function (result) {
+                        $("#contenedorPauta").html(result);
+                    }
+                });
+            });
+        });
+
+        
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Vacunas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Calendario", "Index", "Calendarios")</li>
+                    <li>@Html.ActionLink("Detalle", "Index", "DetalleCalendarios")</li>
+                    <li>@Html.ActionLink("Pauta", "Index", "Pautas")</li>
+                    <li>@Html.ActionLink("Vacuna", "Index", "Vacunas")</li>
+                    <li>@Html.ActionLink("Especie", "Index", "Especie")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TP2</p>
+        </footer>
+    </div>
+
+ 
+</body>
+</html>

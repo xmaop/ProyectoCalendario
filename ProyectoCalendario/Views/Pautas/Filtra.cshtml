@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ProyectoCalendario.Models.Pauta>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva Pauta", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Vacuna
+        </th>
+        <th>
+            Nro Veces
+        </th>
+        <th>
+            Tipo Tiempo
+        </th>
+        <th>
+            Tiempo Inicial
+        </th>
+        <th>
+            Pauta Inicial
+        </th>
+        <th>
+            Tiempo Final
+        </th>
+        <th>
+            Pauta Final
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vacuna.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroveces)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipotiempo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PF)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PautaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PautaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PautaId })
+        </td>
+    </tr>
+}
+
+</table>

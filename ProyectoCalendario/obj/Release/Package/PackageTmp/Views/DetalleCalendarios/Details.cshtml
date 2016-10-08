@@ -1,0 +1,90 @@
+﻿@model ProyectoCalendario.Models.DetalleCalendario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleCalendario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <div class="control-label col-md-2">Calendario</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calendario.nombre)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Vacuna</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vacuna.nombre)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Edad Minima</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edadmin)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Edad Maxima</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edadmax)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Nro Veces</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numeroveces)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Via Aplicacion</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.viaaplicacion)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Volumen</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volumen)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Unidad</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unidad)
+        </dd>
+
+        <dt>
+            <div class="control-label col-md-2">Efectos</div>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.efectos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DetallecalendarioId }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
