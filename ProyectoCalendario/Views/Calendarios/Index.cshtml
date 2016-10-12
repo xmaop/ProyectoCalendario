@@ -41,7 +41,10 @@
             @Html.DisplayFor(modelItem => item.FF)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CalendarioId }) |
+            @if(DateTime.Compare(DateTime.Now,item.FF.AsDateTime())<0)
+            {
+            @Html.ActionLink("Edit", "Edit", new { id=item.CalendarioId }) 
+            }|
             @Html.ActionLink("Details", "Details", new { id=item.CalendarioId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CalendarioId })
         </td>

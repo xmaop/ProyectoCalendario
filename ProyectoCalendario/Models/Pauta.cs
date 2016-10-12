@@ -18,11 +18,11 @@ namespace ProyectoCalendario.Models
 
         [Required]
         //[DataType(DataType.Date)]
-        public string TI { get; set; }
+        public int TI { get; set; }
         public string PI { get; set; }
         [Required]
         //[DataType(DataType.Date)]
-        public string TF { get; set; }
+        public int TF { get; set; }
         public string PF { get; set; }
         public virtual Vacuna vacuna { get; set; }
     }

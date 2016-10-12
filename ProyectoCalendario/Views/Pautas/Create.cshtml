@@ -34,7 +34,11 @@
         <div class="form-group">
             <div class="control-label col-md-2">Tipo Tiempo</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tipotiempo, new { htmlAttributes = new { @class = "form-control" } })
+                <select id="tipotiempo" name="tipotiempo">
+                    <option>Días</option>
+                    <option>Semanas</option>
+                    <option>Meses</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.tipotiempo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -95,4 +99,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/Scripts/Calendarioscript.js")
 }
