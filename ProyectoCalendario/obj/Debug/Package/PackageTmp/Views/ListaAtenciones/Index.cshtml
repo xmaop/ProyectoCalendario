@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProyectoCalendario.Models.ListaAtencion>
+
+@{
+    ViewBag.Title = "Lista de Atencion";
+}
+
+<div id="ListaEpera">
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table id="tablaListaAtencion" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.nombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.especie.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mascota.nombreMascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaAtencion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horaAtencion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id=@Html.DisplayFor(modelItem => item.ListaAtencionId)>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.nombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.especie.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mascota.nombreMascota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaAtencion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horaAtencion)
+        </td>
+       
+    </tr>
+}
+
+</table>
+</div>
+
+<br />
+<div id="botonRegresa" class="col-md-offset-2 col-md-10" style="display:none">
+    <input type="button" value="Regresar" onclick="btn_Regresa()"  class="btn btn-default" />
+</div>
+<br />
+<div id="contenedorClienteAtencion"></div>
+<div id="contenedorMascotaAtencion"></div>
+<div id="contenedorCalendarioAtencion"></div>
+<div id="contenedorDetalleAtencion"></div>
+<div id="contenedorPautaAtencion"></div>
+<br />
+<div id="contenedorFinalizaAtencion" style="display:none">
+    <label>Motivo de Rechazo(opcional)</label>
+    <textarea maxlength="250" id="txtRechazo"></textarea><br />
+    <input type="button" value="REGISTRAR" onclick="btn_grabar()" class="btn btn-default" />
+
+</div>
+@Scripts.Render("~/Scripts/Atencion.js")

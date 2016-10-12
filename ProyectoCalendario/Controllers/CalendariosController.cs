@@ -20,6 +20,11 @@ namespace ProyectoCalendario.Controllers
             var calendarios = db.Calendarios.Include(c => c.especie);
             return View(calendarios.ToList());
         }
+        public ActionResult FiltraCalendario()
+        {
+            var detcalendario = db.Calendarios;
+            return View(detcalendario.ToList());
+        }
 
         // GET: Calendarios/Details/5
         public ActionResult Details(int? id)

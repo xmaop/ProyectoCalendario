@@ -1,0 +1,66 @@
+﻿@model ProyectoCalendario.Models.ServicioClinico
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>ServicioClinico</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ListaAtencionId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ListaAtencionId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CalendarioId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CalendarioId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.detalleCalendarioId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.detalleCalendarioId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pautasId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pautasId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FF)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FF)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ServicioClinicoId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

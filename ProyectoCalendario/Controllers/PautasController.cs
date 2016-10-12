@@ -25,6 +25,11 @@ namespace ProyectoCalendario.Controllers
             var detpautas = db.Pautas.Where(d => d.vacunaId == id);
             return View(detpautas.ToList());
         }
+        public ActionResult FiltraPautas(int? id)
+        {
+            var detpautas = db.Pautas.Where(d => d.vacunaId == id);
+            return View(detpautas.ToList());
+        }
 
         // GET: Pautas/Details/5
         public ActionResult Details(int? id)

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoCalendario.Models.Cliente>
+
+@{
+    ViewBag.Title = "Filtrado";
+}
+@{
+    Layout = "";
+}
+<h4>Datos de Cliente</h4>
+
+<table id="tablaCliente" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidoCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dniCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefonoCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccionCliente)
+        </th>
+      
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dniCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefonoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccionCliente)
+            </td>
+           
+        </tr>
+    }
+
+</table>

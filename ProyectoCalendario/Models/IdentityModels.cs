@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -40,5 +42,17 @@ namespace ProyectoCalendario.Models
 
         public System.Data.Entity.DbSet<ProyectoCalendario.Models.Pauta> Pautas { get; set; }
 
+        public System.Data.Entity.DbSet<ProyectoCalendario.Models.Cliente> Clientes { get; set; }
+
+        public System.Data.Entity.DbSet<ProyectoCalendario.Models.Mascota> Mascotas { get; set; }
+
+        public System.Data.Entity.DbSet<ProyectoCalendario.Models.ListaAtencion> ListaAtencions { get; set; }
+
+        public System.Data.Entity.DbSet<ProyectoCalendario.Models.ServicioClinico> ServicioClinicoes { get; set; }
+
+        public static implicit operator ApplicationDbContext(SqlConnection v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
