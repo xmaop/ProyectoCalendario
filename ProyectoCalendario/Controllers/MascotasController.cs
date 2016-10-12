@@ -10,122 +10,113 @@ using ProyectoCalendario.Models;
 
 namespace ProyectoCalendario.Controllers
 {
-    public class PautasController : Controller
+    public class MascotasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Pautas
+        // GET: Mascotas
         public ActionResult Index()
         {
-            var pautas = db.Pautas.Include(p => p.vacuna);
-            return View(pautas.ToList());
-        }
-        public ActionResult Filtra(int? id)
-        {
-            var detpautas = db.Pautas.Where(d => d.vacunaId == id);
-            return View(detpautas.ToList());
-        }
-        public ActionResult FiltraPautas(int? id)
-        {
-            var detpautas = db.Pautas.Where(d => d.vacunaId == id);
-            return View(detpautas.ToList());
+            return View(db.Mascotas.ToList());
         }
 
-        // GET: Pautas/Details/5
+        public ActionResult Filtra(int? id)
+        {
+            var detcalendario = db.Mascotas.Where(d => d.MascotaId == id);
+            return View(detcalendario.ToList());
+        }
+
+        // GET: Mascotas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pauta pauta = db.Pautas.Find(id);
-            if (pauta == null)
+            Mascota mascota = db.Mascotas.Find(id);
+            if (mascota == null)
             {
                 return HttpNotFound();
             }
-            return View(pauta);
+            return View(mascota);
         }
 
-        // GET: Pautas/Create
+        // GET: Mascotas/Create
         public ActionResult Create()
         {
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre");
             return View();
         }
 
-        // POST: Pautas/Create
+        // POST: Mascotas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PautaId,vacunaId,numeroveces,tipotiempo,TI,PI,TF,PF")] Pauta pauta)
+        public ActionResult Create([Bind(Include = "MascotaId,nombreMascota,fechaNacimientoMascota,razaMascota")] Mascota mascota)
         {
             if (ModelState.IsValid)
             {
-                db.Pautas.Add(pauta);
+                db.Mascotas.Add(mascota);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre", pauta.vacunaId);
-            return View(pauta);
+            return View(mascota);
         }
 
-        // GET: Pautas/Edit/5
+        // GET: Mascotas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pauta pauta = db.Pautas.Find(id);
-            if (pauta == null)
+            Mascota mascota = db.Mascotas.Find(id);
+            if (mascota == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre", pauta.vacunaId);
-            return View(pauta);
+            return View(mascota);
         }
 
-        // POST: Pautas/Edit/5
+        // POST: Mascotas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PautaId,vacunaId,numeroveces,tipotiempo,TI,PI,TF,PF")] Pauta pauta)
+        public ActionResult Edit([Bind(Include = "MascotaId,nombreMascota,fechaNacimientoMascota,razaMascota")] Mascota mascota)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pauta).State = EntityState.Modified;
+                db.Entry(mascota).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre", pauta.vacunaId);
-            return View(pauta);
+            return View(mascota);
         }
 
-        // GET: Pautas/Delete/5
+        // GET: Mascotas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pauta pauta = db.Pautas.Find(id);
-            if (pauta == null)
+            Mascota mascota = db.Mascotas.Find(id);
+            if (mascota == null)
             {
                 return HttpNotFound();
             }
-            return View(pauta);
+            return View(mascota);
         }
 
-        // POST: Pautas/Delete/5
+        // POST: Mascotas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pauta pauta = db.Pautas.Find(id);
-            db.Pautas.Remove(pauta);
+            Mascota mascota = db.Mascotas.Find(id);
+            db.Mascotas.Remove(mascota);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

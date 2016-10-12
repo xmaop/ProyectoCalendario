@@ -1,0 +1,58 @@
+﻿@model ProyectoCalendario.Models.ListaAtencion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ListaAtencion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombreCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombreCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.especie.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especie.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mascota.nombreMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mascota.nombreMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaAtencion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaAtencion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.horaAtencion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.horaAtencion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ListaAtencionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

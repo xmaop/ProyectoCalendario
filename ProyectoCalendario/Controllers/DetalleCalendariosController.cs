@@ -25,6 +25,13 @@ namespace ProyectoCalendario.Controllers
              var detcalendario = db.DetalleCalendarios.Where(d => d.CalendarioId == id);
             return View(detcalendario.ToList());
         }
+        public ActionResult FiltraDetalle(int? id)
+        {
+            var detcalendario = db.DetalleCalendarios.Where(d => d.CalendarioId == id);
+            return View(detcalendario.ToList());
+        }
+
+
         // GET: DetalleCalendarios/Details/5
         public ActionResult Details(int? id)
         {

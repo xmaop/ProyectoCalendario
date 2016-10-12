@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProyectoCalendario.Models.DetalleCalendario>
+
+@{
+    ViewBag.Title = "Filtra Detalle Calendario";
+}
+
+<h4>Datos del Detalle Calendario</h4>
+
+
+<table id ="tbDetalleCalendario" class="table">
+    <tr>
+        <th>
+            Calendario
+        </th>
+        <th>
+            Vacuna
+        </th>
+        <th>
+            Edad Minima
+        </th>
+        <th>
+            Edad Maxima
+        </th>
+        <th>
+            Nro Veces
+        </th>
+        <th>
+            Via Aplicacion
+        </th>
+        <th>
+            Volumen
+        </th>
+        <th>
+            Unidad
+        </th>
+        <th>
+            Efectos
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id=@Html.DisplayFor(modelItem => item.VacunaId) class="sframe3">
+            <td>
+                @Html.DisplayFor(modelItem => item.calendario.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vacuna.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.edadmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.edadmax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroveces)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.viaaplicacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.volumen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.efectos)
+            </td>
+
+        </tr>
+    }
+
+</table>

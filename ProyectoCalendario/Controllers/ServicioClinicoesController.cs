@@ -7,125 +7,129 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoCalendario.Models;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ProyectoCalendario.Controllers
 {
-    public class PautasController : Controller
+    public class ServicioClinicoesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Pautas
+        private SqlConnection con;
+        // GET: ServicioClinicoes
         public ActionResult Index()
         {
-            var pautas = db.Pautas.Include(p => p.vacuna);
-            return View(pautas.ToList());
-        }
-        public ActionResult Filtra(int? id)
-        {
-            var detpautas = db.Pautas.Where(d => d.vacunaId == id);
-            return View(detpautas.ToList());
-        }
-        public ActionResult FiltraPautas(int? id)
-        {
-            var detpautas = db.Pautas.Where(d => d.vacunaId == id);
-            return View(detpautas.ToList());
+            return View(db.ServicioClinicoes.ToList());
         }
 
-        // GET: Pautas/Details/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateServi([Bind(Include = "ServicioClinicoId,ListaAtencionId,CalendarioId,detalleCalendarioId,pautasId,FF")] ServicioClinico servicioClinico)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                db.ServicioClinicoes.Add(servicioClinico);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(servicioClinico);
+        }
+
+
+        // GET: ServicioClinicoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pauta pauta = db.Pautas.Find(id);
-            if (pauta == null)
+            ServicioClinico servicioClinico = db.ServicioClinicoes.Find(id);
+            if (servicioClinico == null)
             {
                 return HttpNotFound();
             }
-            return View(pauta);
+            return View(servicioClinico);
         }
 
-        // GET: Pautas/Create
+        // GET: ServicioClinicoes/Create
         public ActionResult Create()
         {
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre");
             return View();
         }
 
-        // POST: Pautas/Create
+        // POST: ServicioClinicoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PautaId,vacunaId,numeroveces,tipotiempo,TI,PI,TF,PF")] Pauta pauta)
+        public ActionResult Create([Bind(Include = "ServicioClinicoId,ListaAtencionId,CalendarioId,detalleCalendarioId,pautasId,FF")] ServicioClinico servicioClinico)
         {
             if (ModelState.IsValid)
             {
-                db.Pautas.Add(pauta);
+                db.ServicioClinicoes.Add(servicioClinico);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre", pauta.vacunaId);
-            return View(pauta);
+            return View(servicioClinico);
         }
 
-        // GET: Pautas/Edit/5
+        // GET: ServicioClinicoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pauta pauta = db.Pautas.Find(id);
-            if (pauta == null)
+            ServicioClinico servicioClinico = db.ServicioClinicoes.Find(id);
+            if (servicioClinico == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre", pauta.vacunaId);
-            return View(pauta);
+            return View(servicioClinico);
         }
 
-        // POST: Pautas/Edit/5
+        // POST: ServicioClinicoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PautaId,vacunaId,numeroveces,tipotiempo,TI,PI,TF,PF")] Pauta pauta)
+        public ActionResult Edit([Bind(Include = "ServicioClinicoId,ListaAtencionId,CalendarioId,detalleCalendarioId,pautasId,FF")] ServicioClinico servicioClinico)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pauta).State = EntityState.Modified;
+                db.Entry(servicioClinico).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.vacunaId = new SelectList(db.Vacunas, "VacunaId", "nombre", pauta.vacunaId);
-            return View(pauta);
+            return View(servicioClinico);
         }
 
-        // GET: Pautas/Delete/5
+        // GET: ServicioClinicoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pauta pauta = db.Pautas.Find(id);
-            if (pauta == null)
+            ServicioClinico servicioClinico = db.ServicioClinicoes.Find(id);
+            if (servicioClinico == null)
             {
                 return HttpNotFound();
             }
-            return View(pauta);
+            return View(servicioClinico);
         }
 
-        // POST: Pautas/Delete/5
+        // POST: ServicioClinicoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pauta pauta = db.Pautas.Find(id);
-            db.Pautas.Remove(pauta);
+            ServicioClinico servicioClinico = db.ServicioClinicoes.Find(id);
+            db.ServicioClinicoes.Remove(servicioClinico);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
