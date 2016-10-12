@@ -1,0 +1,51 @@
+﻿@model ProyectoCalendario.Models.Calendario
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Calendario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            Calendario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt>
+            Especie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especie.nombre)
+        </dd>
+
+        <dt>
+            Fecha Inicial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FI)
+        </dd>
+
+        <dt>
+            Fecha Final
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FF)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CalendarioId }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
